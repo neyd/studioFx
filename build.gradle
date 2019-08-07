@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+//        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
+        classpath 'com.android.tools.build:gradle:5.1.1'
+//        classpath 'org.javafxports:jfxswt:8.0.72'
+    }
+}
+
+//apply plugin: 'org.javafxports.jfxmobile'
+
+//mainClassName = 'ensemble.EnsembleApp'
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+
+
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
+    defaultConfig {
+        applicationId "com.neyd"
+        minSdkVersion 25
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: '/Users/yevhenneydel/AndroidStudioProjects/crossApp/src/java/org/dalvin/rt/lib/ext')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    testCompile 'junit:junit:4.12'
+}
